@@ -3,3 +3,9 @@ output "vpc_id" {
   sensitive = false
   description = "ID da VPC"
 }
+
+output "vpc_cidr" {
+  value = aws_vpc.main.cidr_block
+  sensitive = false
+  description = "IP da VPC"
+}
