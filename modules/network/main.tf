@@ -1,11 +1,11 @@
 module "vpc" {
-  source   = "../vpc"
+  source   = "./vpc"
   network  = "10.0.0.0/24"
   vpc_name = "vpc-rs-project-${terraform.workspace}"
 }
 
 module "sub_pub_a" {
-  source = "../subnets"
+  source = "./subnets"
   vpc_id = module.vpc.vpc_id
 
   sub_name = "sub_pub_a"
@@ -13,7 +13,7 @@ module "sub_pub_a" {
 }
 
 module "sub_pub_b" {
-  source = "../subnets"
+  source = "./subnets"
   vpc_id = module.vpc.vpc_id
 
   sub_name = "sub_pub_b"
@@ -21,7 +21,7 @@ module "sub_pub_b" {
 }
 
 module "sub_pri_a" {
-  source = "../subnets"
+  source = "./subnets"
   vpc_id = module.vpc.vpc_id
 
   sub_name = "sub_pri_a"
@@ -29,7 +29,7 @@ module "sub_pri_a" {
 }
 
 module "sub_pri_b" {
-  source = "../subnets"
+  source = "./subnets"
   vpc_id = module.vpc.vpc_id
 
   sub_name = "sub_pri_b"
@@ -37,7 +37,7 @@ module "sub_pri_b" {
 }
 
 module "gateway" {
-  source = "../gateway"
+  source = "./gateway"
 
   vpc_id = module.vpc.vpc_id
 
@@ -45,7 +45,7 @@ module "gateway" {
 }
 
 module "public_rt" {
-  source = "../routetable"
+  source = "./routetable"
 
   vpc_id      = module.vpc.vpc_id
   route_gw_id = module.gateway.gw_id
@@ -54,7 +54,7 @@ module "public_rt" {
 }
 
 module "private_rt" {
-  source = "../routetable"
+  source = "./routetable"
 
   vpc_id      = module.vpc.vpc_id
   route_gw_id = null
@@ -63,14 +63,14 @@ module "private_rt" {
 }
 
 module "private_rta" {
-  source = "../rt_association"
+  source = "./rt_association"
 
   sub_id = [module.sub_pri_a.sub_id, module.sub_pri_b.sub_id]
   rt_id  = module.private_rt.rt_id
 }
 
 module "public_rta" {
-  source = "../rt_association"
+  source = "./rt_association"
 
   sub_id = [module.sub_pub_a.sub_id, module.sub_pub_b.sub_id]
   rt_id  = module.public_rt.rt_id
