@@ -185,16 +185,16 @@
   },
   "active": "2ca54787e0a7b435",
   "lastOpenFiles": [
-    "modules/security/security_group/outputs.tf",
-    "modules/security/security_group/variables.tf",
-    "modules/security/security_group/main.tf",
-    "modules/security/security_group",
+    "modules/network/outputs.tf",
+    "modules/security/variables.tf",
+    "modules/security/outputs.tf",
     "modules/security/main.tf",
-    "modules/security",
-    "modules/network/gateway/main.tf",
-    "modules/network/gateway",
-    "modules/network/nat/main.tf",
-    "modules/network/nat",
-    "modules/network/vpc/variables.tf"
+    "modules/ec2/userdata.sh",
+    "modules/ec2/outputs.tf",
+    "modules/ec2/variables.tf",
+    "modules/ec2/main.tf",
+    "modules/ec2",
+    "modules/security/security_group/outputs.tf",
+    "modules/security/security_group/variables.tf"
   ]
 }
