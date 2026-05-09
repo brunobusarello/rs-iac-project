@@ -14,7 +14,7 @@ resource "aws_key_pair" "ec2_key" {
 resource "aws_instance" "app_server" {
   count = 2
 
-  ami                    = var.ami_id
+  ami                    = data.aws_ami.amazon_linux.id
   instance_type          = var.instance_type
   subnet_id              = var.public_subnet_ids[count.index]
   vpc_security_group_ids = [var.ec2_sg_id]

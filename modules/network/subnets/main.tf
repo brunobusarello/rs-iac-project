@@ -3,6 +3,8 @@ resource "aws_subnet" "subnets" {
 
   cidr_block = var.range
 
+  map_public_ip_on_launch = var.public
+
   tags = {
     Name = var.sub_name
   }
