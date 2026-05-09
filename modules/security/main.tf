@@ -44,8 +44,8 @@ resource "aws_security_group" "ec2_sg" {
     to_port         = 80
     protocol        = "tcp"
     # dicard after create alb
-    cidr_blocks = [ "0.0.0.0/0" ]
-    # security_groups = [aws_security_group.alb_sg.id]
+    #cidr_blocks = [ "0.0.0.0/0" ]
+    security_groups = [aws_security_group.alb_sg.id]
   }
 
   ingress {

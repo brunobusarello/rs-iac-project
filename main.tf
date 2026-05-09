@@ -21,3 +21,14 @@ module "ec2" {
   key_name              = "brunobusarello-key"
   public_key_path       = "project-key.pub"
 }
+
+module "loadbalancer" {
+  source = "./modules/loadbalancer"
+
+  environment = terraform.workspace
+  subnets     = [module.network.sub_pub_a_id, module.network.sub_pub_b_id]
+  vpc_id      = module.network.vpc_id
+  sg_lb_id    = module.security.alb_sg_id
+  ec2_2_id    = module.ec2.instance_ids[0]
+  ec2_1_id    = module.ec2.instance_ids[1]
+}
