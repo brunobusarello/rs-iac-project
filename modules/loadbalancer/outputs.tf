@@ -1,0 +1,4 @@
+output "public_ip" {
+  value = aws_lb.alb.dns_name
+  sensitive = false
+}
